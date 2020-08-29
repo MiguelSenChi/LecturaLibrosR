@@ -99,3 +99,10 @@ XLSX <- read_excel("archivo_xlsx.xlsx", col_names = T)
 XLSX$RRSS <- as.numeric(XLSX$RRSS)
 
 str(XLSX)
+
+#8. Importar con extensión ".pdf": Usando "pdf_text"
+install.packages("pdftools")
+library(pdftools)
+
+texto <- pdftools::pdf_text("archivo_pdf.pdf")
+texto[1]

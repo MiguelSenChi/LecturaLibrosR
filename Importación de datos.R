@@ -1,7 +1,14 @@
-#fb.me/EstadisticaRyPython
+#Facebook: fb.me/EstadisticaRyPython
+#GitHub: https://github.com/MiguelSenChi
 
-#1. Importar con extensi贸n ".csv": Usando "read.csv"
-CSV <- read.csv("archivo_csv.csv") #Forma b谩sica
+#limpiamos el workspace, por si hubiera info cargada
+rm(list = ls())
+
+# Limpiamos la consola
+cat("\014")
+
+#1. Importar con extensi髇 ".csv": Usando "read.csv"
+CSV <- read.csv("archivo_csv.csv") #Forma b醩ica
 
 CSV <- read.csv("archivo_csv.csv", header = T, sep = ",", 
                 row.names = 1) #Forma breve
@@ -10,18 +17,18 @@ CSV <- read.csv("archivo_csv.csv", header = T, sep = ",",
                 row.names = 1, quote = "\"", dec = ",",
                 comment.char = "-") #Forma extendida
 
-#3. Importar con extensi贸n ".csv": Usando "read_csv"
+#3. Importar con extensi髇 ".csv": Usando "read_csv"
 install.packages("readr")
 library(readr)
 
 CSV <- read_csv("archivo_csv.csv", col_names = T,na = "NA",
                  quote = "\"",comment = "-")
 
-#4. Importar con extensi贸n ".csv": Usando csvread"
+#4. Importar con extensi髇 ".csv": Usando csvread"
 install.packages("csvread")
 library(csvread)
 
-#Revisamos el tipo de dato de nuestro DF
+#Revisamos el tipo de dato de nuestro archivo
 map.coltypes("archivo_csv.csv", header = T)
 
 #Leemos el archivo considerando el tipo de dato
@@ -63,6 +70,32 @@ str(TXT)
 TXT$Edad <- as.numeric(TXT$Edad)
 TXT$Estatura <- as.numeric(TXT$Estatura)
 
-#6. Importar con extensi贸n ".sav": Usando read.spss"
+#6. Importar con extensi髇 ".sav": Usando read.spss"
 install.packages("foreign")
 library(foreign)
+
+SPSS <- read.spss("archivo_sav.sav")
+
+SPSS <- read.spss("archivo_sav.sav",to.data.frame=T,
+                  use.value.labels=T, use.missings=T)
+
+SPSS <- read.spss("archivo_sav.sav",to.data.frame=T,
+                  use.value.labels=F, use.missings=T)
+
+#7. Importar con extensi髇 ".sav": Usando "read_spss"
+install.packages("haven")
+library(haven)
+
+SPSS <- read_spss("archivo_sav.sav", user_na = T, 
+                  col_select = c(1:3, 5:10, 12:14, 17:20),
+                  n_max = 20)
+
+#8. Importar con extensi髇 ".xlsx": Usando "read_excel"
+install.packages("readxl")
+library(readxl)
+
+XLSX <- read_excel("archivo_xlsx.xlsx", col_names = T)
+
+XLSX$RRSS <- as.numeric(XLSX$RRSS)
+
+str(XLSX)

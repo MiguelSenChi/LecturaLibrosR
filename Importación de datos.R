@@ -1,14 +1,14 @@
 #Facebook: fb.me/EstadisticaRyPython
 #GitHub: https://github.com/MiguelSenChi
 
-#limpiamos el workspace, por si hubiera info cargada
+#Limpiamos el workspace, por si hubiera info cargada
 rm(list = ls())
 
-# Limpiamos la consola
+#Limpiamos la consola
 cat("\014")
 
-#1. Importar con extensión ".csv": Usando "read.csv"
-CSV <- read.csv("archivo_csv.csv") #Forma básica
+#1. Importar con extensi?n ".csv": Usando "read.csv"
+CSV <- read.csv("archivo_csv.csv") #Forma b?sica
 
 CSV <- read.csv("archivo_csv.csv", header = T, sep = ",", 
                 row.names = 1) #Forma breve
@@ -17,14 +17,14 @@ CSV <- read.csv("archivo_csv.csv", header = T, sep = ",",
                 row.names = 1, quote = "\"", dec = ",",
                 comment.char = "-") #Forma extendida
 
-#3. Importar con extensión ".csv": Usando "read_csv"
+#2. Importar con extensi?n ".csv": Usando "read_csv"
 install.packages("readr")
 library(readr)
 
 CSV <- read_csv("archivo_csv.csv", col_names = T,na = "NA",
                  quote = "\"",comment = "-")
 
-#4. Importar con extensión ".csv": Usando csvread"
+#3. Importar con extensi?n ".csv": Usando csvread"
 install.packages("csvread")
 library(csvread)
 
@@ -55,7 +55,7 @@ str(CSV)
 CSV$Edad <- as.numeric(CSV$Edad)
 CSV$Peso <- as.numeric(CSV$Peso)
 
-#5. Importar con extensiÃ³n ".txt": Usando "read.csv"
+#4. Importar con extensiÃ³n ".txt": Usando "read.csv"
 
 TXT <- read.csv("archivo_txt.txt")
 
@@ -70,7 +70,7 @@ str(TXT)
 TXT$Edad <- as.numeric(TXT$Edad)
 TXT$Estatura <- as.numeric(TXT$Estatura)
 
-#6. Importar con extensión ".sav": Usando read.spss"
+#5. Importar con extensi?n ".sav": Usando read.spss"
 install.packages("foreign")
 library(foreign)
 
@@ -82,7 +82,7 @@ SPSS <- read.spss("archivo_sav.sav",to.data.frame=T,
 SPSS <- read.spss("archivo_sav.sav",to.data.frame=T,
                   use.value.labels=F, use.missings=T)
 
-#7. Importar con extensión ".sav": Usando "read_spss"
+#6. Importar con extensi?n ".sav": Usando "read_spss"
 install.packages("haven")
 library(haven)
 
@@ -90,7 +90,7 @@ SPSS <- read_spss("archivo_sav.sav", user_na = T,
                   col_select = c(1:3, 5:10, 12:14, 17:20),
                   n_max = 20)
 
-#8. Importar con extensión ".xlsx": Usando "read_excel"
+#7. Importar con extensi?n ".xlsx": Usando "read_excel"
 install.packages("readxl")
 library(readxl)
 

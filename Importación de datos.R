@@ -24,6 +24,8 @@ library(readr)
 CSV <- read_csv("archivo_csv.csv", col_names = T,na = "NA",
                  quote = "\"",comment = "-")
 
+CSV <- CSV[, -1]
+
 #3. Importar con extensi?n ".csv": Usando csvread"
 install.packages("csvread")
 library(csvread)
@@ -60,7 +62,7 @@ CSV$Peso <- as.numeric(CSV$Peso)
 TXT <- read.csv("archivo_txt.txt")
 
 TXT = TXT[ , -1]
-TXT = TXT[-6,]
+TXT = TXT[-6, ]
 
 TXT[] <-lapply(TXT, gsub, pattern='"', replacement='')
 TXT[] <-lapply(TXT, gsub, pattern=',', replacement='.')
@@ -104,5 +106,5 @@ str(XLSX)
 install.packages("pdftools")
 library(pdftools)
 
-texto <- pdftools::pdf_text("archivo_pdf.pdf")
-texto[1]
+PDF <- pdftools::pdf_text("archivo_pdf.pdf")
+PDF[2]
